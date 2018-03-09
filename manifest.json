@@ -1,0 +1,25 @@
+{
+  "name": "__MSG_extName__",
+  "manifest_version": 2,
+  "version": "1.0",
+  "description": "__MSG_extDesc__",
+  "icons": { "128": "images/default_icon.png" },
+  "default_locale":"en",
+  "browser_action": {
+    "default_title": "__MSG_ext_default_title__",
+    "default_icon": "images/default_icon.png",
+    "default_popup": "views/signin.html"
+  },
+  "permissions": [
+    "tabs",
+    "<all_urls>"
+  ],
+  "options_page": "views/options.html",
+  "background": {
+    "page": "views/background.html"
+  },
+  "web_accessible_resources": [
+    "/images/*",
+    "/jsons/*"
+  ]
+}
