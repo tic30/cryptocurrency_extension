@@ -14,10 +14,6 @@
     "tabs",
     "<all_urls>"
   ],
-  "options_page": "views/options.html",
-  "background": {
-    "page": "views/background.html"
-  },
   "web_accessible_resources": [
     "/images/*",
     "/jsons/*"
