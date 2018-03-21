@@ -15,13 +15,17 @@
             <img src="/images/default_icon.png">
             <span>Crytocurrency Wallet</span>
         </div>
-        <div id="defaultHeader">
-            <img id="page-icon">
-            <div id="page-title">Oops! This does not work on current page...</div>
+        <div class="section" id="signinBox">
+            <input id="usernameInput" placeholder="Username" value="user1">
+            <input placeholder="Password" type="password" value="123" disabled>
+            <button id="signinBtn">Sign In</button>
         </div>
 
-        <div><button type="button" id="watchBalanceBtn">watch balance</button></div>
-        <div id="coinbase"></div>
+        <div id="defaultHeader">
+            <div id="page-title"></div>
+        </div>
+        <div><button type="button" id="watchBalanceBtn">Show Balance</button></div>
+        <div id="coinbase" hidden></div>
         <div id="original"></div>
         <div id="current"></div>
         <div id="diff"></div>
@@ -30,7 +34,6 @@
     <script type="text/javascript" src="/javascript/bignumber.min.js"></script>
     <script type="text/javascript" src="/javascript/web3-light.min.js"></script>
     <script src="/javascript/jquery.js"></script>
-    <script src="/jsons/keywords.js"></script>
     <script src="/javascript/signin.js"></script>
 
 </body>
