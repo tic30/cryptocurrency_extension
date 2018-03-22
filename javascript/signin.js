@@ -15,6 +15,7 @@ function watchBalance() {
     var coinbase;
     web3.eth.getAccounts(function(err,result){
         coinbase = result[user];
+        var receiver = result[1];
         console.log(coinbase);   
         //coinbase = result[2];    
         var originalBalance = web3.eth.getBalance(coinbase).toString(10);//.toNumber();
@@ -34,6 +35,8 @@ function watchBalance() {
                 return result;
             }
         });
+
+
         //var myContractBalance = myContract.getBalance(coinbase);
         //console.log("Real balance:", myContractBalance.toNumber());
         
@@ -47,9 +50,8 @@ function watchBalance() {
         console.log(web3.eth.getBalance(coinbase));
 
         if (user == 0){
-            //Send 0.01 ether to account 2
-            var amount = web3.toWei(0.01, "ether");
-            sendEther(0, 1, amount);
+            var amount = 10;
+            sendMetaCoin(myContract, coinbase, receiver, amount);
         }
 
         document.getElementById('coinbase').innerText = 'coinbase: ' + coinbase;
@@ -66,12 +68,15 @@ function watchBalance() {
 /*
 *  send amount from sender to receiver. 
 */
-function sendEther(sender, receiver, amount){
-    web3.eth.getAccounts(function(err,result){
-        var account1 = result[sender];
-        var account2 = result[receiver];
-
-        web3.eth.sendTransaction({from:account1, to:account2, value: amount});
+function sendMetaCoin(myContract, sender, receiver, amount){
+    myContract.sendCoin(receiver, amount, {from: sender}, function(error,result){
+        if(error){
+            console.log("Error");
+            throw error;
+        }else{
+            console.log("Send success");
+            return result;
+        }
     });
 }
 
