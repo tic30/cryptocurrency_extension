@@ -1,6 +1,6 @@
 html,
 body{
-    width: 300px;
+    width: 500px;
     min-height: 250px;
     font-size: 14px;
     font-family: sans-serif;
@@ -57,7 +57,9 @@ body{
 .wrapper .section{
     margin-top: 10px;
     padding: 5px;
-    border-top: 1px solid #ccc
+    border-top: 1px solid #ccc;
+    /* display: flex;
+    justify-content: space-between; */
 }
 
 .wrapper .innerul{
