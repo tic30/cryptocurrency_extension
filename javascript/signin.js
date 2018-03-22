@@ -30,6 +30,7 @@ function watchBalance() {
                 console.log("Error");
                 throw error;
             }else{
+                console.log("Real balance:", result.toNumber());
                 return result;
             }
         });
