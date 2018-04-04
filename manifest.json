@@ -15,7 +15,7 @@
     "<all_urls>"
   ],
   "background": {
-    "scripts": ["javascript/background.js"]
+    "scripts": ["javascript/web3.min.js", "javascript/background.js"]
   },
   "web_accessible_resources": [
     "/images/*",

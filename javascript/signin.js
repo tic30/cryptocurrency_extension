@@ -1,4 +1,4 @@
-var Web3 = require('web3');
+//var Web3 = require('web3');
 var web3 = new Web3();
 var user = 0;
 web3.setProvider(new web3.providers.HttpProvider("http://localhost:8545"));
@@ -7,7 +7,7 @@ var receiver,
     amount = 10;
     abi = [{"constant":false,"inputs":[{"name":"receiver","type":"address"},{"name":"amount","type":"uint256"}],"name":"sendCoin","outputs":[{"name":"sufficient","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"constant":true,"inputs":[{"name":"addr","type":"address"}],"name":"getBalance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"}]
     contractAbi = web3.eth.contract(abi);
-    contractAddress = '0xd4affae57522a1118776ee05a789d6b718b45cd1';
+    contractAddress = '0xc1f82c1adb8523a2f301a403d34f8d16ea9a6d9e';
     myContract = contractAbi.at(contractAddress);
 
 function watchBalance() {
@@ -118,6 +118,21 @@ function getCurrentTabUrl(callback) {
   });
 }
 
+function listenFromContentScript(){
+    chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+        if (request.action == "buy") {
+            console.log("Receive message from contentScript");
+      
+            //Receive message
+            var message = request.message;
+            console.log("Receive message is:" + message["ethAccount"]);
+
+            //Call send coin to ethAccount
+
+        }
+    });
+}
+
 $(document).ready(function(){
     $("#signinBtn").click(function(){
         $("#signinBox").hide();
@@ -130,7 +145,8 @@ $(document).ready(function(){
         sendMetaCoin(myContract, coinbase, receiver, amount);
     });
 
-    //Add content event
-    getCurrentTabUrl((url) => {
-    });
+    //Add listener
+    listenFromContentScript();
+
+
 })
