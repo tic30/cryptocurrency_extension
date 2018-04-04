@@ -7,7 +7,7 @@ var receiver,
     amount = 10;
     abi = [{"constant":false,"inputs":[{"name":"receiver","type":"address"},{"name":"amount","type":"uint256"}],"name":"sendCoin","outputs":[{"name":"sufficient","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"constant":true,"inputs":[{"name":"addr","type":"address"}],"name":"getBalance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"}]
     contractAbi = web3.eth.contract(abi);
-    contractAddress = '0x29eaa15c7ae5e6f88f826f7a4ea92e26f61178f5';
+    contractAddress = '0xd4affae57522a1118776ee05a789d6b718b45cd1';
     myContract = contractAbi.at(contractAddress);
 
 function watchBalance() {
@@ -100,6 +100,24 @@ function sendMetaCoin(myContract, sender, receiver, amount){
     });
 }
 
+/**
+ * Get the current URL.
+ */
+function getCurrentTabUrl(callback) {
+  // Query filter to be passed to chrome.tabs.query - see
+  // https://developer.chrome.com/extensions/tabs#method-query
+  var queryInfo = {
+    active: true,
+    currentWindow: true
+  };
+
+  chrome.tabs.query(queryInfo, (tabs) => {
+    var tab = tabs[0];
+    var url = tab.url;
+    callback(url);
+  });
+}
+
 $(document).ready(function(){
     $("#signinBtn").click(function(){
         $("#signinBox").hide();
@@ -110,5 +128,9 @@ $(document).ready(function(){
     });
     $("#sendBtn").click(function(){
         sendMetaCoin(myContract, coinbase, receiver, amount);
+    });
+
+    //Add content event
+    getCurrentTabUrl((url) => {
     });
 })

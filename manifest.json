@@ -14,6 +14,9 @@
     "tabs",
     "<all_urls>"
   ],
+  "background": {
+    "scripts": ["javascript/background.js"]
+  },
   "web_accessible_resources": [
     "/images/*",
     "/jsons/*"
