@@ -8,7 +8,7 @@ function initWallet(){
 	web3.setProvider(new web3.providers.HttpProvider("http://localhost:8545"));
 	var receiver,
 	    coinbase,
-	    amount = 10;
+	    amount = 100;
 	    abi = [{"constant":false,"inputs":[{"name":"receiver","type":"address"},{"name":"amount","type":"uint256"}],"name":"sendCoin","outputs":[{"name":"sufficient","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"constant":true,"inputs":[{"name":"addr","type":"address"}],"name":"getBalance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"}]
 	    contractAbi = web3.eth.contract(abi);
 	    contractAddress = '0xc1f82c1adb8523a2f301a403d34f8d16ea9a6d9e';

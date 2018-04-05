@@ -1,0 +1,36 @@
+h1{
+    margin-bottom: 100px;
+}
+.content{
+    padding: 5% 10%;
+}
+.row{
+    position: relative;
+    height: 80px;
+}
+.col{
+    height: 100%;
+    padding: 15px;
+}
+.glyphicon{
+    border: 1px solid #ccc;
+    padding: 0 3px;
+}
+#row0{
+    height:20px;
+}
+#row0 .col{
+    padding: 0
+}
+.price{
+    color: #B12704;
+}
+#bgimg{
+    background: url("../product.jpg") no-repeat center center
+}
+#desc{
+    color: #0066c0
+}
+#buttons{
+    float: right;
+}

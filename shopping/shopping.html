@@ -1,16 +1,35 @@
 <html>
 <head>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/bootstrap-theme.min.css"/>
-
+    <link rel="stylesheet" href="css/shopping.css">
 </head>
-<body>
-<h1>My First </h1>
-<div>Sent <input type="text" id='amount'> ETH to <input type="text" id='ethAccount'>
-<button id='submitButton'>Submit</button>
-</div>
+<body class="content">
+    <h1>Shopping Cart</h1>
+    <div class="row" id="row0">
+        <div class="col col-xs-1 col-xs-offset-9">Amount</div>
+        <div class="col col-xs-1">Cash Price</div>
+        <div class="col col-xs-1">MC Price</div>
+    </div>
+    <div class="row">
+        <div class="col col-xs-1" id="bgimg"></div>
+        <div class="col col-xs-8" id="desc">
+            Apple MacBook Pro MLH12LL/A 13-inch Laptop with Touch Bar, 2.9GHz dual-core Intel Core i5, 256GB, Retina Display, Space Gray
+        </div>
+        <div class="col col-xs-1"><span class="glyphicon glyphicon-minus"></span> 1 <span class="glyphicon glyphicon-plus"></span></div>
+        <div class="col col-xs-1 price">$2000</div>
+        <div class="col col-xs-1 price">M 100</div>
+    </div>
+    <div hidden>
+        <input class="form-control" type="text" id='amount' value="100">
+        <input class="form-control" type="text" id='ethAccount' placeholder="receiver's account" value="">
+    </div>
+    <div class="row" id="buttons">
+        <button class="btn btn-primary">Buy</button>
+        <button class="btn btn-warning" id='submitButton'>Buy with MetaCoin!</button>
+    </div>
+    </div>
 
-<!--<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>-->
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
 </body>
 </html>
