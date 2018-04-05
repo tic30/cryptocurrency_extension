@@ -4,44 +4,47 @@
 
 <head>
     <link rel="stylesheet" href="/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/css/signin.css" />
+    <link rel="stylesheet" href="/css/signin.css"/>
 </head>
 
 <body>
-    <!-- onload = "getTopics();getNewsByTitle();" onunload = "saveLastTopic();">-->
+<!-- onload = "getTopics();getNewsByTitle();" onunload = "saveLastTopic();">-->
 
-    <div class="wrapper">
-        <div class="header">
-            <img src="/images/default_icon.png">
-            <span>Crytocurrency Wallet</span>
-        </div>
-        <div class="section" id="signinBox">
-            <input id="usernameInput" placeholder="Username" value="user1">
-            <input placeholder="Password" type="password" value="123" disabled>
-            <button id="signinBtn">Sign In</button>
-        </div>
+<div class="wrapper">
+    <div class="header">
+        <img src="/images/default_icon.png">
+        <span>Crytocurrency Wallet</span>
+    </div>
+    <div class="section" id="signinBox">
+        <input id="accountInput" placeholder="account" value="">
+        <span id="invalidHint">Invalid Account! </span>
+        <!--<input id="usernameInput" placeholder="Username" value="user1">-->
+        <!--<input placeholder="Password" type="password" value="123" disabled>-->
+        <button id="signinBtn">Sign In</button>
 
-        <div id="defaultHeader">
-            <div id="username"></div>
-            <div id="page-title"><span id="balance">0</span> MetaCoin</div>
-        </div>
-        <!-- <div id="coinbase"></div>
-        <div id="original"></div>
-        <div id="current"></div> -->
-        <div class="section">            
-            <div><strong>Eth Balance:</strong></div>
-            <div>Original: <span id="original"></span></div>
-            <div>Current: <span id="current"></span></div>
-            <div>Diff: <span id="diff"></span></div>
-        </div>
-        <div><button type="button" id="sendBtn"></button></div>
     </div>
 
-    <script type="text/javascript" src="/javascript/bignumber.min.js"></script>
-    <!--<script type="text/javascript" src="/javascript/web3-light.min.js"></script>-->
-    <script type="text/javascript" src="/javascript/web3.min.js"></script>
-    <script src="/javascript/jquery.js"></script>
-    <script src="/javascript/signin.js"></script>
+    <div id="defaultHeader">
+        <div>Account: <span id="username"></span></div>
+        <div id="page-title"><span id="balance">0</span> MetaCoin</div>
+    </div>
+    <!-- <div id="coinbase"></div>
+    <div id="original"></div>
+    <div id="current"></div> -->
+    <div class="section">
+        <div><strong>Eth Balance:</strong></div>
+        <div>Original: <span id="original"></span></div>
+        <div>Current: <span id="current"></span></div>
+        <div>Diff: <span id="diff"></span></div>
+    </div>
+        <button type="button" id="signout">Sign out</button>
+</div>
+
+<script type="text/javascript" src="/javascript/bignumber.min.js"></script>
+<!--<script type="text/javascript" src="/javascript/web3-light.min.js"></script>-->
+<script type="text/javascript" src="/javascript/web3.min.js"></script>
+<script src="/javascript/jquery.js"></script>
+<script src="/javascript/signin.js"></script>
 
 </body>
 
