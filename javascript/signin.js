@@ -36,7 +36,7 @@ abi = [{
     "type": "function"
 }]
 contractAbi = web3.eth.contract(abi);
-contractAddress = '0x43ad9b0ad7a5ff4e1b83b71d4e4a27bc3cd173c0';
+contractAddress = '0xc67d933635bd6ee832c6000c590442db50ccabaa';
 myContract = contractAbi.at(contractAddress);
 
 function watchBalance() {
@@ -48,44 +48,7 @@ function watchBalance() {
 
     var originalBalance = web3.fromWei(web3.eth.getBalance(account))//.toString(10);//.toNumber();
     document.getElementById("original").innerText = originalBalance//+parseFloat(originalBalance).toFixed(2);
-    //var myContractBalance = myContract.getBalance(coinbase);//.then(function(balance){
-    //console.log("Real balance:", myContractBalance.toNumber());
-    //})
-    //myContract.getBalance(coinbase){
 
-    //}
-
-    // var myContractBalance = myContract.getBalance(coinbase, function(error,result){
-    //     if(error){
-    //         console.log("Error");
-    //         throw error;
-    //     }else{
-    //         console.log("Real balance:", result.toNumber());
-    //         $("#balance").html(result.toNumber());
-    //         return result;
-    //     }
-    // });
-
-
-    //var myContractBalance = myContract.getBalance(coinbase);
-    //console.log("Real balance:", myContractBalance.toNumber());
-
-    /*var metaCoinBalance = MetaCoin.deployed().then(function(instance) {
-        return instance.getBalance.call(coinbase)
-    }).then(function(outCoinBalance){
-        balance222=outCoinBalance.toNumber();
-        return outCoinBalance.toNumber()
-    });*/
-    // console.log(originalBalance);
-    // console.log(web3.eth.getBalance(coinbase));
-
-    // if (user == 0){
-    //     var amount = 10;
-    //     sendMetaCoin(myContract, coinbase, receiver, amount);
-    // }
-
-    // document.getElementById('coinbase').innerText = 'coinbase: ' + coinbase;
-    //document.getElementById('original').innerHTML = 'original balance: ' + metaCoinBalance + '<br>watching...';
     web3.eth.filter('latest').watch(function () {
         var currentBalance = web3.fromWei(web3.eth.getBalance(account))//.toNumber();
         currentBalance = currentBalance//+parseFloat(currentBalance).toFixed(2);
@@ -106,56 +69,6 @@ function watchBalance() {
     });
 
 }
-
-// /*
-// *  send amount from sender to receiver.
-// */
-// function sendMetaCoin(myContract, sender, receiver, amount){
-//     myContract.sendCoin(receiver, amount, {from: sender}, function(error,result){
-//         if(error){
-//             console.log("Error");
-//             throw error;
-//         }else{
-//             console.log("Send success");
-//             return result;
-//         }
-//     });
-// }
-
-// /**
-//  * Get the current URL.
-//  */
-// function getCurrentTabUrl(callback) {
-//   // Query filter to be passed to chrome.tabs.query - see
-//   // https://developer.chrome.com/extensions/tabs#method-query
-//   var queryInfo = {
-//     active: true,
-//     currentWindow: true
-//   };
-//
-//   chrome.tabs.query(queryInfo, (tabs) => {
-//     var tab = tabs[0];
-//     var url = tab.url;
-//     callback(url);
-//   });
-// }
-//
-// function listenFromContentScript(){
-//     chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-//         if (request.action == "buy") {
-//             console.log("Receive message from contentScript");
-//
-//             //Receive message
-//             var message = request.message;
-//             console.log("Receive message is:" + message["ethAccount"]);
-//
-//             //Call send coin to ethAccount
-//
-//         }
-//     });
-// }
-
-//first account: 0x572d074dcdc87f90ba11150a172a52c438d8a0e3
 
 function checkAccount(account) {
     web3.eth.getAccounts(function (err, result) {

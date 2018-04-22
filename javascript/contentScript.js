@@ -7,7 +7,6 @@ function transferETH() {
     }
     chrome.runtime.sendMessage(message);
     console.log('In contentScript read ethAccount is:' + ethAccount + ' amount is:' + amount);
-
 }
 
 //Add button click event

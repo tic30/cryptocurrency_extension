@@ -2,29 +2,55 @@
 var myContract;
 var user = 0;
 var myAccount = 0;
-function initWallet(){
-	//Init web3
-	web3 = new Web3();
-	web3.setProvider(new web3.providers.HttpProvider("http://localhost:8545"));
-	var receiver,
-	    coinbase,
-	    amount = 100;
-	    abi = [{"constant":false,"inputs":[{"name":"receiver","type":"address"},{"name":"amount","type":"uint256"}],"name":"sendCoin","outputs":[{"name":"sufficient","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"constant":true,"inputs":[{"name":"addr","type":"address"}],"name":"getBalance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"}]
-	    contractAbi = web3.eth.contract(abi);
-	    contractAddress = '0x43ad9b0ad7a5ff4e1b83b71d4e4a27bc3cd173c0';
-	    myContract = contractAbi.at(contractAddress);
+
+function initWallet() {
+    //Init web3
+    web3 = new Web3();
+    web3.setProvider(new web3.providers.HttpProvider("http://localhost:8545"));
+    var receiver,
+        coinbase,
+        amount = 100;
+    abi = [{
+        "constant": false,
+        "inputs": [{"name": "receiver", "type": "address"}, {"name": "amount", "type": "uint256"}],
+        "name": "sendCoin",
+        "outputs": [{"name": "sufficient", "type": "bool"}],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }, {
+        "anonymous": false,
+        "inputs": [{"indexed": true, "name": "_from", "type": "address"}, {
+            "indexed": true,
+            "name": "_to",
+            "type": "address"
+        }, {"indexed": false, "name": "_value", "type": "uint256"}],
+        "name": "Transfer",
+        "type": "event"
+    }, {"inputs": [], "payable": false, "stateMutability": "nonpayable", "type": "constructor"}, {
+        "constant": true,
+        "inputs": [{"name": "addr", "type": "address"}],
+        "name": "getBalance",
+        "outputs": [{"name": "", "type": "uint256"}],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }]
+    contractAbi = web3.eth.contract(abi);
+    contractAddress = '0xc67d933635bd6ee832c6000c590442db50ccabaa';
+    myContract = contractAbi.at(contractAddress);
 }
 
 /*
 *  send amount from sender to receiver. 
 */
-function sendMetaCoin(sender, receiver, amount){
-	console.log("sendMetaCoin from " + sender + " to " + receiver + " amount: " + amount);
-    myContract.sendCoin(receiver, amount, {from: sender}, function(error,result){
-        if(error){
+function sendMetaCoin(sender, receiver, amount) {
+    console.log("sendMetaCoin from " + sender + " to " + receiver + " amount: " + amount);
+    myContract.sendCoin(receiver, amount, {from: sender}, function (error, result) {
+        if (error) {
             console.log("Error");
             throw error;
-        }else{
+        } else {
             console.log("Send success");
             return result;
         }
@@ -32,44 +58,43 @@ function sendMetaCoin(sender, receiver, amount){
 }
 
 
-
 /*
 ** Valid message
 */
-function validateInput(message){
-	//Valid amount
+function validateInput(message) {
+    //Valid amount
 
-	//Valid account
+    //Valid account
 
-	return true;
+    return true;
 }
 
 initWallet()
 console.log("Init Wallet success");
-chrome.tabs.onUpdated.addListener( function (tabId, changeInfo, tab) {
-  if (changeInfo.status == 'complete' && tab.active) {
+chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
+    if (changeInfo.status == 'complete' && tab.active) {
 
-  	chrome.tabs.executeScript(null, {file : "javascript/contentScript.js"});
+        chrome.tabs.executeScript(null, {file: "javascript/contentScript.js"});
 
-  	chrome.runtime.onMessage.addListener(
-	    function(message, sender, sendResponse){
-	        console.log("Receive new buy request ethAccount: " + message.ethAccount + " Amount:" + message.amount);
-            chrome.storage.local.get(['account'], function (result) {
-                account = result.account;
-                if (account != undefined && account != null && account != "") {
-                    if (!validateInput(message)){
-                        alert("Please input valid account");
+        chrome.runtime.onMessage.addListener(
+            function (message, sender, sendResponse) {
+                console.log("Receive new buy request ethAccount: " + message.ethAccount + " Amount:" + message.amount);
+                chrome.storage.local.get(['account'], function (result) {
+                    account = result.account;
+                    if (account != undefined && account != null && account != "") {
+                        if (!validateInput(message)) {
+                            alert("Please input valid account");
+                        } else {
+                            //Send metacoin
+                            sendMetaCoin(account, message.ethAccount, message.amount);
+                        }
                     } else {
-                        //Send metacoin
-                        sendMetaCoin(account, message.ethAccount, message.amount);
+                        alert("Please login your account first");
                     }
-                } else {
-                    alert("Please login your account first");
-                }
-            });
+                });
 
-	    }
-	);
-  }
+            }
+        );
+    }
 })
 

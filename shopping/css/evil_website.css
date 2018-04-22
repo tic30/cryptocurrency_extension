@@ -1,0 +1,21 @@
+h1 {
+    margin-bottom: 100px;
+}
+
+.content {
+    padding: 5% 10%;
+}
+
+.row {
+    position: relative;
+    height: 80px;
+}
+
+.col {
+    height: 100%;
+    padding: 15px;
+}
+
+#buttons {
+    margin: auto;
+}
