@@ -5,6 +5,7 @@
 <head>
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/signin.css"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -16,16 +17,24 @@
         <span>Crytocurrency Wallet</span>
     </div>
     <div class="section" id="signinBox">
-        <input id="accountInput" placeholder="account" value="">
+        <div class="form-group">
+            <label for="username">Your Name:</label>
+            <input id="username" class="form-control" value="">
+        </div>
+        <div class="form-group">
+            <label for="accountInput">Account Number:</label>
+            <input id="accountInput" class="form-control" value="">
+        </div>
         <span id="invalidHint">Invalid Account! </span>
         <!--<input id="usernameInput" placeholder="Username" value="user1">-->
         <!--<input placeholder="Password" type="password" value="123" disabled>-->
-        <button id="signinBtn">Sign In</button>
+        <button id="signinBtn" class="btn btn-primary">Sign In</button>
 
     </div>
 
-    <div id="defaultHeader">
-        <div>Account: <span id="username"></span></div>
+    <div id="defaultHeader" class="section">
+        <div>Hello, <span id="yournameSpan">there</span>!</div>
+        <div><strong>Account: </strong></div>
         <div id="page-title"><span id="balance">0</span> MetaCoin</div>
     </div>
     <!-- <div id="coinbase"></div>
@@ -37,13 +46,14 @@
         <div>Current: <span id="current"></span></div>
         <div>Diff: <span id="diff"></span></div>
     </div>
-        <button type="button" id="signout">Sign out</button>
+    <button type="button" id="signout" class="btn btn-primary">Sign out</button>
 </div>
 
 <script type="text/javascript" src="/javascript/bignumber.min.js"></script>
 <!--<script type="text/javascript" src="/javascript/web3-light.min.js"></script>-->
 <script type="text/javascript" src="/javascript/web3.min.js"></script>
 <script src="/javascript/jquery.js"></script>
+<script type="/javascript/javascript" src="js/bootstrap.min.js"></script>
 <script src="/javascript/signin.js"></script>
 
 </body>

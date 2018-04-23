@@ -36,7 +36,7 @@ abi = [{
     "type": "function"
 }]
 contractAbi = web3.eth.contract(abi);
-contractAddress = '0x43ad9b0ad7a5ff4e1b83b71d4e4a27bc3cd173c0';
+contractAddress = '0xace680f24b6c0242b97d96795673e14683ba0293';
 myContract = contractAbi.at(contractAddress);
 
 function watchBalance() {
@@ -163,10 +163,14 @@ function checkAccount(account) {
         for (var i in result) {
             console.log(result[i]);
             if (account == result[i]) {
-                chrome.storage.local.set({'account': account}, function () {
+                var yourname = $("#username").val();
+                // var yourname = document.querySelector("#username").value;
+                chrome.storage.local.set({'account': {'name': yourname, 'accountNo': account}}, function () {
                     console.log('account is set to ' + account);
                 });
                 $("#signinBox").hide();
+                // $("#yournameSpan").html(yourname);
+                document.querySelector("#yournameSpan").innerHTML = yourname;
                 $("#username").html(account);
                 watchBalance();
                 return;
@@ -180,10 +184,11 @@ $(document).ready(function () {
     $("#invalidHint").hide();
     $("#loadingHint").hide();
     chrome.storage.local.get(['account'], function (result) {
-        console.log('account is ', result.account);
-        account = result.account;
+        console.log('account is ', result.account.accountNo);
+        account = result.account.accountNo;
         if (account != undefined && account != null && account != "") {
             $("#signinBox").hide();
+            $("#yournameSpan").html(result.account.name);
             $("#username").html(account);
             watchBalance();
         }
