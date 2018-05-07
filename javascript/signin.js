@@ -36,7 +36,7 @@ abi = [{
     "type": "function"
 }]
 contractAbi = web3.eth.contract(abi);
-contractAddress = '0x075a8e37df67ebdd00deb68ff178b82bebd1aa7b';
+contractAddress = '0x43ad9b0ad7a5ff4e1b83b71d4e4a27bc3cd173c0';
 myContract = contractAbi.at(contractAddress);
 
 function watchBalance() {
