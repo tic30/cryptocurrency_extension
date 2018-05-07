@@ -36,7 +36,7 @@ abi = [{
     "type": "function"
 }]
 contractAbi = web3.eth.contract(abi);
-contractAddress = '0xace680f24b6c0242b97d96795673e14683ba0293';
+contractAddress = '0x701a4402ffcde3d54586e598778b0e11fe85447e';
 myContract = contractAbi.at(contractAddress);
 
 function watchBalance() {
@@ -169,7 +169,7 @@ function checkAccount(account) {
                     console.log('account is set to ' + account);
                 });
                 $("#signinBox").hide();
-                // $("#yournameSpan").html(yourname);
+                // $("#yournameSpan").text(yourname);
                 document.querySelector("#yournameSpan").innerHTML = yourname;
                 $("#username").html(account);
                 watchBalance();
@@ -181,6 +181,7 @@ function checkAccount(account) {
 }
 
 $(document).ready(function () {
+    $("#mytime").html(Date.now());
     $("#invalidHint").hide();
     $("#loadingHint").hide();
     chrome.storage.local.get(['account'], function (result) {

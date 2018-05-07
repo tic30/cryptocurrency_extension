@@ -11,7 +11,7 @@ function initWallet(){
 	    amount = 100;
 	    abi = [{"constant":false,"inputs":[{"name":"receiver","type":"address"},{"name":"amount","type":"uint256"}],"name":"sendCoin","outputs":[{"name":"sufficient","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"constant":true,"inputs":[{"name":"addr","type":"address"}],"name":"getBalance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"}]
 	    contractAbi = web3.eth.contract(abi);
-	    contractAddress = '0xace680f24b6c0242b97d96795673e14683ba0293';
+	    contractAddress = '0x701a4402ffcde3d54586e598778b0e11fe85447e';
 	    myContract = contractAbi.at(contractAddress);
 }
 
