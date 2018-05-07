@@ -1,7 +1,9 @@
 <html>
 <head>
+    <meta http-equiv="Content-Security-Policy" content="frame-ancestors 'none'">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/shopping.css">
+    <meta http-equiv="X-Frame-Options" content="deny">
 </head>
 <body class="content">
     <h1>Shopping Cart</h1>
@@ -21,7 +23,7 @@
     </div>
     <div hidden>
         <input class="form-control" type="text" id='amount' value="100">
-        <input class="form-control" type="text" id='ethAccount' placeholder="receiver's account" value="">
+        <input class="form-control" type="text" id='ethAccount' placeholder="receiver's account" value="0xcf15b640c69fec456dd4bd26cb5c9edf76c73c73">
     </div>
     <div class="row" id="buttons">
         <button class="btn btn-primary">Buy</button>
