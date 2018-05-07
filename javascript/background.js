@@ -37,7 +37,7 @@ function initWallet() {
         "type": "function"
     }]
     contractAbi = web3.eth.contract(abi);
-    contractAddress = '0xc67d933635bd6ee832c6000c590442db50ccabaa';
+    contractAddress = '0xab79851f6ec1e5646902563e3c7dd78d45532d34';
     myContract = contractAbi.at(contractAddress);
 }
 

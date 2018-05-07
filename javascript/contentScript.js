@@ -5,9 +5,17 @@ function transferETH() {
         'ethAccount': ethAccount,
         'amount': amount
     }
-    chrome.runtime.sendMessage(message);
-    console.log('In contentScript read ethAccount is:' + ethAccount + ' amount is:' + amount);
+    console.log('try to send ethAccount : ' + ethAccount + ' Metacoin, amount is:' + amount);
+    // adding an alert for the users
+    var r = confirm("Send " + amount + " MetaCoin(s) to\n" + ethAccount + " ?");
+    if (r == true) {
+        txt = "Send!";
+        chrome.runtime.sendMessage(message);
+    } else {
+        txt = "You pressed Cancel!";
+    }
+    alert(txt);
 }
 
-//Add button click event
+
 document.getElementById("submitButton").addEventListener("click", transferETH);
